@@ -21,7 +21,6 @@ public class EventsController {
     private EventsService eventsService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public Page<Event> getAllEvent(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id") String sortBy){
         return this.eventsService.getEvent(page,size,sortBy);
     }

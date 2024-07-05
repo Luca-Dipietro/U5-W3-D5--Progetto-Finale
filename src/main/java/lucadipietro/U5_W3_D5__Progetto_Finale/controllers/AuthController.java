@@ -1,5 +1,4 @@
 package lucadipietro.U5_W3_D5__Progetto_Finale.controllers;
-import lucadipietro.U5_W3_D5__Progetto_Finale.entities.User;
 import lucadipietro.U5_W3_D5__Progetto_Finale.exceptions.BadRequestException;
 import lucadipietro.U5_W3_D5__Progetto_Finale.payloads.NewUserDTO;
 import lucadipietro.U5_W3_D5__Progetto_Finale.payloads.NewUserResponseDTO;

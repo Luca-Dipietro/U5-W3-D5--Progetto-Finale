@@ -1,6 +1,5 @@
 package lucadipietro.U5_W3_D5__Progetto_Finale.payloads;
 
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
