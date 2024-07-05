@@ -3,9 +3,11 @@ package lucadipietro.U5_W3_D5__Progetto_Finale.services;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import lucadipietro.U5_W3_D5__Progetto_Finale.entities.User;
+import lucadipietro.U5_W3_D5__Progetto_Finale.enums.Role;
 import lucadipietro.U5_W3_D5__Progetto_Finale.exceptions.BadRequestException;
 import lucadipietro.U5_W3_D5__Progetto_Finale.exceptions.NotFoundException;
 import lucadipietro.U5_W3_D5__Progetto_Finale.payloads.NewUserDTO;
+import lucadipietro.U5_W3_D5__Progetto_Finale.payloads.RoleDTO;
 import lucadipietro.U5_W3_D5__Progetto_Finale.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -73,6 +75,12 @@ public class UsersService {
         String url = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
         found.setAvatar(url);
         return this.usersRepository.save(found);
+    }
+
+    public User updateRole(UUID id, RoleDTO role) {
+        User found = findById(id);
+        found.setRole(Role.valueOf(role.role().toUpperCase()));
+        return usersRepository.save(found);
     }
 
 }
