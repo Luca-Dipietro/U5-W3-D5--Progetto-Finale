@@ -79,7 +79,7 @@ public class UsersController {
         return usersService.updateRole(userId, role);
     }
 
-    @PatchMapping("/{dipendenteId}/avatar")
+    @PatchMapping("/{userId}/avatar")
     @PreAuthorize("hasAuthority('ADMIN')")
     public User uploadAvatar(@PathVariable UUID userId, @RequestParam("avatar") MultipartFile image) throws IOException {
         return this.usersService.uploadImage(userId, image);

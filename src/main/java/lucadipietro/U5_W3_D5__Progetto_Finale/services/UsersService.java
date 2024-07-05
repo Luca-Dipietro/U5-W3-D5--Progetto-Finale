@@ -38,13 +38,13 @@ public class UsersService {
 
     public User save(NewUserDTO body){
         this.usersRepository.findByEmail(body.email()).ifPresent(
-                dipendente -> {
-                    throw new BadRequestException("Esiste già un dipendente con questa email " + body.email());
+                user -> {
+                    throw new BadRequestException("Esiste già un utente con questa email " + body.email());
                 }
         );
-        User newDipendente = new User(body.name(), body.surname(), body.email(),passwordEncoder.encode(body.password()));
-        newDipendente.setAvatar("https://ui-avatars.com/api/?name=" + body.name() + "+" + body.surname());
-        return this.usersRepository.save(newDipendente);
+        User newUser = new User(body.name(), body.surname(), body.email(),passwordEncoder.encode(body.password()));
+        newUser.setAvatar("https://ui-avatars.com/api/?name=" + body.name() + "+" + body.surname());
+        return this.usersRepository.save(newUser);
     }
 
     public User findById(UUID userId) {
@@ -77,8 +77,8 @@ public class UsersService {
         return this.usersRepository.save(found);
     }
 
-    public User updateRole(UUID id, RoleDTO role) {
-        User found = findById(id);
+    public User updateRole(UUID userId, RoleDTO role) {
+        User found = findById(userId);
         found.setRole(Role.valueOf(role.role().toUpperCase()));
         return usersRepository.save(found);
     }
